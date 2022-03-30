@@ -83,8 +83,8 @@ function WebGLAttributes(gl, capabilities)
 
 		gl.bindBuffer(bufferType, buffer);
 
-		if (updateRanges.size === 0 ||
-			typeof updateRanges === "undefined")
+		if (typeof updateRanges === "undefined" ||
+			updateRanges.size === 0)
 		{
 
 			// Not using update ranges
