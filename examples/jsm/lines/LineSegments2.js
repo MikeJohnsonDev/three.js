@@ -92,7 +92,7 @@ function raycastScreenSpace( lineSegments, camera, intersects ) {
 	const instanceStart = geometry.attributes.instanceStart;
 	const instanceEnd = geometry.attributes.instanceEnd;
 
-	const near = - camera.near;
+	const near = - Math.abs( camera.near );
 
 	//
 
@@ -293,7 +293,7 @@ class LineSegments2 extends Mesh {
 
 		} else {
 
-			const distanceToSphere = Math.max( camera.near, _sphere.distanceToPoint( _ray.origin ) );
+			const distanceToSphere = Math.max( Math.abs( camera.near ), _sphere.distanceToPoint( _ray.origin ) );
 			sphereMargin = getWorldSpaceHalfWidth( camera, distanceToSphere, material.resolution );
 
 		}
@@ -323,7 +323,7 @@ class LineSegments2 extends Mesh {
 
 		} else {
 
-			const distanceToBox = Math.max( camera.near, _box.distanceToPoint( _ray.origin ) );
+			const distanceToBox = Math.max( Math.abs( camera.near ), _box.distanceToPoint( _ray.origin ) );
 			boxMargin = getWorldSpaceHalfWidth( camera, distanceToBox, material.resolution );
 
 		}
